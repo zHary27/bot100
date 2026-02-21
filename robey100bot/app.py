@@ -86,6 +86,14 @@ class Robey100Bot(discord.Client):
         async def ping(interaction: discord.Interaction):
             await interaction.response.send_message("pong")
 
+        @self.tree.command(name="talk", description="Talk through the bot")
+        @app_commands.describe(message="Message for the bot to say")
+        @app_commands.default_permissions(administrator=True)
+        @app_commands.checks.has_permissions(administrator=True)
+        async def talk(interaction: discord.Interaction, message: str):
+            await interaction.response.send_message("Message Sent.", ephemeral=True)
+            await interaction.channel.send(message)
+
         @self.tree.command(name="robey", description="Robey moment")
         async def robey(interaction: discord.Interaction):
             if not ROBEY_DIR.exists() or not ROBEY_DIR.is_dir():
