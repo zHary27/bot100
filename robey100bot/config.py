@@ -26,8 +26,8 @@ def load_settings() -> BotSettings:
     rotating_messages_channel_id = int(
         os.getenv("ROTATING_MESSAGES_CHANNEL_ID")
     )
-    rotating_messages_min_seconds = 2700
-    rotating_messages_max_seconds = 5400
+    rotating_messages_min_seconds = 3600
+    rotating_messages_max_seconds = 10800
 
     if rotating_messages_min_seconds <= 0 or rotating_messages_max_seconds <= 0:
         raise RuntimeError("Rotating message interval values must be positive integers.")
